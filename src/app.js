@@ -40,6 +40,12 @@ function createAuthToken(baseRestURL, username, password, callback) {
   var url = completeRestURL;
   var async = true;
   var request = new XMLHttpRequest();
+  
+  request.open(method, url, async);
+  request.setRequestHeader("Content-Type", "application/json");
+  request.setRequestHeader("Accept", "application/json");
+  request.setRequestHeader("user", this.username);
+  request.setRequestHeader("key", this.password);
   request.onload = function () {
     var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
     console.log(status);
@@ -67,14 +73,9 @@ function createAuthToken(baseRestURL, username, password, callback) {
     });
     return callback(token);
   }
-
-  request.open(method, url, async);
-  request.setRequestHeader("Content-Type", "application/json");
-  request.setRequestHeader("Accept", "application/json");
-  request.setRequestHeader("user", this.username);
-  request.setRequestHeader("key", this.password);
   request.send(postData);
   console.log(request.statusText);
+
 }
 
 function runPopularCidades(respostaConsultaImovelLink) {
@@ -161,12 +162,12 @@ function runTratarTodosDados(respostaConsultaImovelLink) {
     var descricao = null
   }
 
-  if ("vlralucomdesc" in produto) {
-    var valorAluguel = produto.vlralucomdesc
+  if ("vlralusemdesc" in produto) {
+    var valorAluguel = produto.vlralusemdesc
     valorAluguel = valorAluguel.toString()
     valorAluguel = valorAluguel.replace(".", ",")
   } else {
-    var valorAluguel = null
+    var valorAluguel = "sem valor"
   }
 
   if ("vlrcond" in produto) {
