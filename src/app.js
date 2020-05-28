@@ -20,11 +20,8 @@ var infoProduto;
 // Inicio
 app.get('/dadosImoveis', function (req, res) {
   var codigoImovel = req.query.codigoImovel;
-  console.log("" + codigoImovel);
   this.username = req.query.user;
-  console.log("" + this.username);
   this.password = req.query.key;
-  console.log("" + this.password);
   this.baseRestURL = "http://api.brognoli.com.br:8080/api/v2/imoveis/" + codigoImovel;
   createAuthToken(this.baseRestURL, this.username, this.password, function authCallBack(token) {
     res.send(this.infoProduto);
@@ -43,7 +40,6 @@ function createAuthToken(baseRestURL, username, password, callback) {
   var url = completeRestURL;
   var async = true;
   var request = new XMLHttpRequest();
-  console.log(url);
   
   request.onload = function () {
     var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
