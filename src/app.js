@@ -25,7 +25,7 @@ app.get('/dadosImoveis', function (req, res) {
   console.log("" + this.username);
   this.password = req.query.key;
   console.log("" + this.password);
-  this.baseRestURL = "http://api.brognoli.com.br/api/v2/imoveis/" + codigoImovel;
+  this.baseRestURL = "http://api.brognoli.com.br:8080/api/v2/imoveis/" + codigoImovel;
   createAuthToken(this.baseRestURL, this.username, this.password, function authCallBack(token) {
     res.send(this.infoProduto);
     return this.infoProduto;
@@ -74,8 +74,7 @@ function createAuthToken(baseRestURL, username, password, callback) {
   }
 
   request.open(method, url, async);
-  request.setRequestHeader("Content-Type", "application/json");
-  request.setRequestHeader("Accept", "application/json");
+  request.setRequestHeader("Accept", "*/*");
   request.setRequestHeader("user", this.username);
   request.setRequestHeader("key", this.password);
   request.send(postData);
