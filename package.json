@@ -2,9 +2,10 @@
   "name": "api-traducao-link",
   "version": "1.0.0",
   "description": "teste",
-  "main": "index.php",
+  "main": "index.js",
   "scripts": {
     "dev": "nodemon src/app.js",
+    "bairrosBiguacu": "nodemon src/bairrosBiguacu.js",
     "test": "teste"
   },
   "repository": {
