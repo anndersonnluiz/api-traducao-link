@@ -25,7 +25,7 @@ app.get('/dadosImoveis', function (req, res) {
   console.log("" + this.username);
   this.password = req.query.key;
   console.log("" + this.password);
-  this.baseRestURL = "http://189.28.37.236/api/v2/imoveis/" + codigoImovel;
+  this.baseRestURL = "http://api.brognoli.com.br/api/v2/imoveis/" + codigoImovel;
   createAuthToken(this.baseRestURL, this.username, this.password, function authCallBack(token) {
     res.send(this.infoProduto);
     return this.infoProduto;
@@ -44,12 +44,7 @@ function createAuthToken(baseRestURL, username, password, callback) {
   var async = true;
   var request = new XMLHttpRequest();
   console.log(url);
-  request.open(method, url, async);
-  request.setRequestHeader("Content-Type", "application/json");
-  request.setRequestHeader("Accept", "application/json");
-  request.setRequestHeader("user", this.username);
-  request.setRequestHeader("key", this.password);
-  request.send(postData);
+  
   request.onload = function () {
     var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
     console.log(status);
@@ -77,6 +72,13 @@ function createAuthToken(baseRestURL, username, password, callback) {
     });
     return callback(token);
   }
+
+  request.open(method, url, async);
+  request.setRequestHeader("Content-Type", "application/json");
+  request.setRequestHeader("Accept", "application/json");
+  request.setRequestHeader("user", this.username);
+  request.setRequestHeader("key", this.password);
+  request.send(postData);
   console.log(request.statusText);
 
 }
