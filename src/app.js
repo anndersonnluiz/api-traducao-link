@@ -82,6 +82,7 @@ function createAuthToken(baseRestURL, username, password, callback) {
 }
 
 function runPopularCidades(respostaConsultaImovelLink) {
+  console.log(respostaConsultaImovelLink)
   var respostaConsultaImovelLink = JSON.parse(respostaConsultaImovelLink)
   cidade = respostaConsultaImovelLink.cidade
   var cidadesLink = [
