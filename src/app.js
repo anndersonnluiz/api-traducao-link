@@ -43,7 +43,7 @@ function createAuthToken(baseRestURL, username, password, callback) {
   var url = completeRestURL;
   var async = true;
   var request = new XMLHttpRequest();
-  
+  console.log(url);
   request.open(method, url, async);
   request.setRequestHeader("Content-Type", "application/json");
   request.setRequestHeader("Accept", "application/json");
@@ -55,24 +55,24 @@ function createAuthToken(baseRestURL, username, password, callback) {
     console.log(status);
     var token = request.getResponseHeader("x-mstr-authtoken");
     this.ress = this.responseText;
-    runPopularCidades(this.ress, function runPopularCidades(respostaConsultaImovelLink) {
+    runPopularCidades(this.ress, function runPopularCidades() {
     });
     if (idCidadeGlobal == 6) {
-      runBairroFlorianopolis(this.ress, function runBairroFlorianopolis(respostaConsultaImovelLink) {
+      runBairroFlorianopolis(this.ress, function runBairroFlorianopolis() {
       });
 
     } else if (idCidadeGlobal == 13) {
-      runBairroBiguacu(this.ress, function runBairroBiguacu(respostaConsultaImovelLink) {
+      runBairroBiguacu(this.ress, function runBairroBiguacu() {
       });
     } else if (idCidadeGlobal == 1) {
-      runBairroPalhoca(this.ress, function runBairroPalhoca(respostaConsultaImovelLink) {
+      runBairroPalhoca(this.ress, function runBairroPalhoca() {
       });
     } else {
-      runBairroSaoJose(this.ress, function runBairroSaoJose(respostaConsultaImovelLink) {
+      runBairroSaoJose(this.ress, function runBairroSaoJose() {
       });
     }
 
-    runTratarTodosDados(this.ress, function runTratarTodosDados(respostaConsultaImovelLink) {
+    runTratarTodosDados(this.ress, function runTratarTodosDados() {
 
     });
     return callback(token);
