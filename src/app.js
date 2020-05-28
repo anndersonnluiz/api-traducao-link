@@ -49,6 +49,7 @@ function createAuthToken(baseRestURL, username, password, callback) {
   request.setRequestHeader("Accept", "application/json");
   request.setRequestHeader("user", this.username);
   request.setRequestHeader("key", this.password);
+  request.send(postData);
   request.onload = function () {
     var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
     console.log(status);
@@ -76,7 +77,6 @@ function createAuthToken(baseRestURL, username, password, callback) {
     });
     return callback(token);
   }
-  request.send(postData);
   console.log(request.statusText);
 
 }
