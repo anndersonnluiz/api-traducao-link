@@ -32,7 +32,7 @@ app.get('/dadosImoveis', function (req, res) {
   });
 
 })
-http.createServer(app).listen(3000, () => console.log("Servidor rodando local na porta 3000"));
+http.createServer(app).listen(80, () => console.log("Servidor rodando local na porta 80"));
 
 // Autenticação e tratamento do imovel
 function createAuthToken(baseRestURL, username, password, callback) {
